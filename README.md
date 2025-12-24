@@ -1,98 +1,101 @@
-# Powerball Quantum Ultra Predictor
+# powerball-quantum
 
-A Python-based Powerball number prediction system using quantitative analysis techniques inspired by Wall Street trading strategies.
+Powerball number predictor using quantum-inspired algorithm with momentum, mean reversion, and statistical filters.
 
-## Algorithm Overview
+## Installation
 
-**QUANTUM ULTRA** combines multiple signals:
-
+**Python (pip):**
+```bash
+pip install powerball-quantum
 ```
-Score[n] = Momentum + Z-Score×5 + RecentTrend×1.5 + PairSynergy×0.5
+
+**Node.js (npm):**
+```bash
+npm install powerball-quantum
 ```
 
-### Signal Components
+## Python Usage
+
+### CLI
+```bash
+# Get 5 recommended picks
+powerball-quantum predict
+
+# Get 10 picks with analysis
+powerball-quantum predict -c 10 -a
+
+# Quick single pick
+powerball-quantum quick
+
+# Update data from NY Lottery API
+powerball-quantum update
+```
+
+### Python API
+```python
+from powerball_quantum import predict, quick_pick, update_data
+
+# Get 5 picks
+picks = predict(count=5)
+for pick in picks:
+    print(pick)
+# Output: 21 - 26 - 34 - 57 - 61  🔴 1
+
+# Quick single pick
+my_pick = quick_pick()
+print(my_pick.white_balls, my_pick.powerball)
+# [5, 7, 28, 38, 66], 23
+
+# Update data
+update_data()
+```
+
+## Node.js Usage
+
+### CLI
+```bash
+npx powerball-quantum predict
+npx powerball-quantum quick
+npx powerball-quantum update
+```
+
+### JavaScript API
+```javascript
+const { predict, quickPick } = require('powerball-quantum');
+
+const picks = await predict({ count: 5 });
+const myPick = await quickPick();
+```
+
+## Algorithm
+
+**QUANTUM** combines Wall Street quant-inspired signals:
 
 | Signal | Description |
 |--------|-------------|
-| **Momentum** | Exponential decay weighting (e^(-0.03×t)) - recent numbers score higher |
-| **Z-Score** | Mean reversion analysis - overdue numbers get boosted |
-| **Recent Trend** | Last 15 draws with stronger decay (0.15) |
+| **Momentum** | Exponential decay weighting - recent numbers score higher |
+| **Z-Score** | Mean reversion - overdue numbers get boosted |
+| **Recent Trend** | Last 15 draws with stronger emphasis |
 | **Pair Synergy** | Numbers that frequently appear together |
 
 ### 7-Stage Filter
 
-All generated picks must pass:
-
-1. No duplicate with historical winning combinations
-2. Sum range: 130-220 (covers ~70% of winners)
+1. No duplicate with historical combinations
+2. Sum range: 130-220
 3. Odd/Even ratio: 2:3 or 3:2
 4. High/Low balance: 2:3 or 3:2
-5. Decade balance: At least 3 different decades (1-9, 10-19, etc.)
-6. Ending digit diversity: At least 4 different last digits
+5. Decade balance: At least 3 different decades
+6. Ending diversity: At least 4 different last digits
 7. No triple consecutive numbers
-
-## Files
-
-| File | Description |
-|------|-------------|
-| `powerball_app.py` | Main application with all algorithms |
-| `generate_csv.py` | Batch generator for millions of picks |
-| `generate_tomorrow_picks.py` | Quick generator for next draw |
-| `powerball_data.csv` | Historical Powerball data (NY Lottery API) |
-
-## Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/powerball-quantum-ultra.git
-cd powerball-quantum-ultra
-
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-## Usage
-
-### Interactive Mode
-```bash
-python powerball_app.py
-```
-
-### Generate All Strategy Recommendations
-```bash
-python powerball_app.py --all
-```
-
-### Generate 1 Million Picks (QUANTUM ULTRA)
-```bash
-python generate_csv.py
-```
-
-### Quick 100 Picks for Tomorrow
-```bash
-python generate_tomorrow_picks.py
-```
 
 ## Data Source
 
-Historical data is sourced from the [NY Open Data Powerball API](https://data.ny.gov/Government-Finance/Lottery-Powerball-Winning-Numbers-Beginning-2010/d6yy-54nr).
-
-Data is automatically downloaded and filtered for current rules (post October 7, 2015: 5/69 + 1/26).
+Historical data from [NY Open Data Powerball API](https://data.ny.gov/Government-Finance/Lottery-Powerball-Winning-Numbers-Beginning-2010/d6yy-54nr).
 
 ## Disclaimer
 
-This software is for **educational and entertainment purposes only**.
-
-Lottery numbers are randomly drawn, and no algorithm can predict or guarantee winning numbers. Past performance does not indicate future results. Please gamble responsibly.
+**For educational and entertainment purposes only.** Lottery numbers are randomly drawn. No algorithm can predict or guarantee winning numbers. Gamble responsibly.
 
 ## License
 
-MIT License - See [LICENSE](LICENSE) for details.
-
----
-
-Good luck! May the quantum be with you.
+MIT

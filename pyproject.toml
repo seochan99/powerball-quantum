@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "powerball-quantum"
-version = "1.0.0"
+version = "1.0.2"
 description = "Powerball number predictor using quantum-inspired algorithm with momentum, mean reversion, and statistical filters"
 readme = "README.md"
 license = {text = "MIT"}

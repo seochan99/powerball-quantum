@@ -11,5 +11,5 @@ from .predictor import (
     Pick,
 )
 
-__version__ = "1.0.0"
+__version__ = "1.0.2"
 __all__ = ["predict", "quick_pick", "update_data", "load_data", "format_pick", "Pick"]
