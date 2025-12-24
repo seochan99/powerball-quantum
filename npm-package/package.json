@@ -1,0 +1,41 @@
+{
+  "name": "powerball-quantum",
+  "version": "1.0.0",
+  "description": "Powerball number predictor using quantum-inspired algorithm with momentum, mean reversion, and statistical filters",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "powerball-quantum": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "predict": "node dist/cli.js predict",
+    "update": "node dist/cli.js update",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "powerball",
+    "lottery",
+    "predictor",
+    "quantum",
+    "statistics",
+    "probability"
+  ],
+  "author": "seochan99",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seochan99/Powerball-Predictor-Quantum"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "commander": "^11.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
